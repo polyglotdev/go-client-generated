@@ -89,7 +89,10 @@ func (a *AbilityApiService) AbilityList(ctx context.Context, localVarOptionals *
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	err = localVarHttpResponse.Body.Close()
+	if err != nil {
+		return "", nil, err
+	}
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -123,13 +126,6 @@ func (a *AbilityApiService) AbilityList(ctx context.Context, localVarOptionals *
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 
-/*
-AbilityApiService
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-  - @param id
-
-@return string
-*/
 func (a *AbilityApiService) AbilityRead(ctx context.Context, id int32) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
@@ -175,7 +171,10 @@ func (a *AbilityApiService) AbilityRead(ctx context.Context, id int32) (string, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	err = localVarHttpResponse.Body.Close()
+	if err != nil {
+		return "", nil, err
+	}
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

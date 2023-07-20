@@ -89,7 +89,10 @@ func (a *BerryApiService) BerryList(ctx context.Context, localVarOptionals *Berr
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	err = localVarHttpResponse.Body.Close()
+	if err != nil {
+		return "", nil, err
+	}
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -175,7 +178,10 @@ func (a *BerryApiService) BerryRead(ctx context.Context, id int32) (string, *htt
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	err = localVarHttpResponse.Body.Close()
+	if err != nil {
+		return "", nil, err
+	}
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
